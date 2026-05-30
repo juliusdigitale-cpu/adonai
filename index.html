@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adonai FotoCine</title>
+  <link rel="icon" href="src/imagens/foto09.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="logo">Adonai</span>
+        <p>FotoCine</p>
+      </div>
+      <nav class="nav-links">
+        <a href="#servicos">Serviços</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Capturando emoções com arte</span>
+          <h1>Adonai FotoCine</h1>
+          <p>Fotografia e filmagem profissionais para casamentos, eventos corporativos, família e estúdio. Transformamos momentos especiais em imagens cheias de luz, estilo e significado.</p>
+          <a class="button" href="#contato">Agende uma consulta</a>
+        </div>
+        <div class="hero-image">
+          <img src="src/imagens/foto09.jpeg" alt="Casal com câmera" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicos">
+      <div class="container section-header">
+        <h2>Serviços</h2>
+        <p>Solidez técnica e sensibilidade artística para cada projeto.</p>
+      </div>
+      <div class="container service-grid">
+        <article class="card">
+          <h3>Casamentos</h3>
+          <p>Registros emocionantes do seu grande dia, do making of à festa, em foto e vídeo.</p>
+        </article>
+        <article class="card">
+          <h3>Eventos</h3>
+          <p>Cobertura profissional para shows, aniversários, congressos e lançamentos.</p>
+        </article>
+        <article class="card">
+          <h3>Ensaios</h3>
+          <p>Editorial, família, gestante e newborn com direção, iluminação e estilo personalizados.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+      <div class="container section-header">
+        <h2>Portfólio</h2>
+        <p>Inspiração visual para mostrar a qualidade do nosso trabalho.</p>
+      </div>
+      <div class="container portfolio-grid">
+        <img src="src/imagens/foto02.jpeg" alt="Portfolio de fotografia" loading="lazy">
+        <img src="src/imagens/foto10.jpeg" alt="Portfolio de fotografia" loading="lazy">
+        <img src="src/imagens/foto111.png" alt="Portfolio de fotografia" loading="lazy">
+        <img src="src/imagens/foto00.jpeg" alt="Portfolio de fotografia" loading="lazy">
+        <div class="portfolio-text">
+          <h3>Imagens que contam histórias</h3>
+          <p>Cada clique é pensado para transmitir emoção, verdade e beleza. Trabalhamos com cuidado em cada etapa, desde a direção até a edição final.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="container contact-grid">
+        <div>
+          <h2>Contato</h2>
+          <p>Vamos conversar sobre o seu próximo projeto? Entre em contato e faça um orçamento personalizado.</p>
+          <ul class="contact-list">
+            <li><strong>Telefone:</strong> (11) 96575-4892</li>
+            <li><strong>WhatsApp:</strong> (11) 96575-4892</li>
+            <li><strong>E-mail:</strong> adonaifotocine@gmail.com</li>
+          </ul>
+        </div>
+        <div class="contact-card">
+          <h3>Reserve sua data</h3>
+          <p>Preencha o formulário abaixo e retornaremos em breve.</p>
+          <form id="contact-form" class="contact-form">
+            <label>
+              Nome
+              <input id="nome" name="nome" type="text" placeholder="Seu nome" required>
+            </label>
+            <label>
+              E-mail
+              <input id="email" name="email" type="email" placeholder="seu@email.com" required>
+            </label>
+            <label>
+              Mensagem
+              <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte sobre o evento" required></textarea>
+            </label>
+            <button type="submit">Enviar mensagem</button>
+            <div id="form-status" class="form-status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© 2026 Adonai FotoCine. Beleza, emoção e profissionalismo em cada frame.</p>
+    </div>
+  </footer>
+
+  <script>
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    contactForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mensagem = document.getElementById('mensagem').value.trim();
+
+      if (!nome || !email || !mensagem) {
+        formStatus.textContent = 'Por favor, preencha todos os campos antes de enviar.';
+        formStatus.className = 'form-status error';
+        return;
+      }
+
+      const subject = encodeURIComponent('Orçamento - Adonai FotoCine');
+      const body = encodeURIComponent(`Nome: ${nome}\nE-mail: ${email}\n\nMensagem:\n${mensagem}`);
+      const mailto = `mailto:contato@adonai-fotocine.com?subject=${subject}&body=${body}`;
+
+      formStatus.textContent = 'Abrindo seu cliente de e-mail...';
+      formStatus.className = 'form-status success';
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>
